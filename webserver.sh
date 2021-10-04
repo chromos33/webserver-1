@@ -8,7 +8,7 @@
 # File:	webserver-projects.sh
 # Author: Runge, Timo
 # Copyright: 2010 innomedia AG
-# Optimized: Ornella Posta / 28.09.2021
+# Optimized: Ornella  / 28.09.2021
 
 # --------------------------------------------------------------------------------
 
