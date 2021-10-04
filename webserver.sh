@@ -23,7 +23,7 @@ MYSQL_PORT='3306'
 MYSQL_USER='root'
 
 # --- CONFIGURE: GITHUB
-GIT_TOKEN='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'
+GIT_TOKEN='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'
 
 # --- CONFIGURE: Domain (will be used be vHost ServerName generation)
 DOMAIN_MASTER='tietge.com'
@@ -437,7 +437,7 @@ gui_update_project () {
 helper_project_checkout () {
 	SVN_REPO=${SVN_REPO_PROTOCOL}'://'${SVN_REPO_URL}':'${SVN_REPO_PORT}${SVN_REPO_PATH}
 	echo 'Checkout project to htdocs ... '
-	svn co ${SVN_REPO}${PROJECT_NAME}/trunk --username ${SVN_REPO_USER} --password ${SVN_REPO_PASS} /var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
+        git clone https://${GIT_TOKEN}@github.com/${GIT_USERNAME}/${PROJECT_NAME}.git /var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
 	echo 'Set rights for project ... '
 	chown -R ${VIRTUAL_USER_NAME}:${VIRTUAL_USER_GROUP} /var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
 	chmod -R 660 /var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs/*
