@@ -23,7 +23,7 @@ MYSQL_PORT='3306'
 MYSQL_USER='root'
 
 # --- CONFIGURE: GITHUB
-GIT_TOKEN='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'
+source config.sh
 
 # --- CONFIGURE: Domain (will be used be vHost ServerName generation)
 DOMAIN_MASTER='tietge.com'
