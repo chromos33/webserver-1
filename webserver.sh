@@ -171,7 +171,7 @@ gui_choose_domain () {
 	case ${ENVIRONMENT} in
 		0) DOMAIN_ENVIRONMENT_TYPE='test';;
 		1) DOMAIN_ENVIRONMENT_TYPE='live';;
-	    2) DOMAIN_ENVIRONMENT_TYPE='development';;
+	        2) DOMAIN_ENVIRONMENT_TYPE='development';;
 
 	esac
 	DOMAIN_PROJECT=`echo ${PROJECT_NAME} | awk -F'_' '{ print $2 }'`
@@ -200,7 +200,7 @@ gui_choose_environment () {
 	dialog	--backtitle "${APP_TITLE}" \
 					--title 'Environment' \
 					--cancel-label 'Back' \
-					--menu 'Choose the environment:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 2 \
+					--menu 'Choose the environment:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 3 \
 					0 'testing' \
 					1 'production' 2> ${_TEMP}
 					2 'develope'
@@ -223,7 +223,7 @@ gui_choose_main_action () {
 	dialog	--backtitle "${APP_TITLE}" \
 					--title 'Start' \
 					--cancel-label 'Quit' \
-					--menu 'Choose your action:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 2 \
+					--menu 'Choose your action:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 3 \
 					0 'Checkout project' \
 					1 'Project actions' 2> ${_TEMP}
 	case ${?} in
