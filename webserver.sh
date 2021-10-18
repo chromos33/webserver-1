@@ -199,16 +199,15 @@ gui_choose_environment () {
 	dialog	--backtitle "${APP_TITLE}" \
 					--title 'Environment' \
 					--cancel-label 'Back' \
-					--menu 'Choose the environment:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 3 \
+					--menu 'Choose the environment:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 2 \
 					0 'testing' \
-					1 'production'2> ${_TEMP}
+					1 'production' 2> ${_TEMP}
 	if [ ${?} -eq 0 ] ; then
 		ENVIRONMENT=`cat ${_TEMP}`
 		rm -f ${_TEMP}
 		case ${ENVIRONMENT} in
 			0) ENVIRONMENT_TYPE='testing';;
 			1) ENVIRONMENT_TYPE='production';;
-
 		esac
 	else
 		gui_choose_main_action
@@ -220,7 +219,7 @@ gui_choose_main_action () {
 	dialog	--backtitle "${APP_TITLE}" \
 					--title 'Start' \
 					--cancel-label 'Quit' \
-					--menu 'Choose your action:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 3 \
+					--menu 'Choose your action:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 2 \
 					0 'Checkout project' \
 					1 'Project actions' 2> ${_TEMP}
 	case ${?} in
