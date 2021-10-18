@@ -171,7 +171,6 @@ gui_choose_domain () {
 	case ${ENVIRONMENT} in
 		0) DOMAIN_ENVIRONMENT_TYPE='test';;
 		1) DOMAIN_ENVIRONMENT_TYPE='live';;
-	        2) DOMAIN_ENVIRONMENT_TYPE='development';;
 
 	esac
 	DOMAIN_PROJECT=`echo ${PROJECT_NAME} | awk -F'_' '{ print $2 }'`
@@ -202,15 +201,13 @@ gui_choose_environment () {
 					--cancel-label 'Back' \
 					--menu 'Choose the environment:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 3 \
 					0 'testing' \
-					1 'production'
-					2 'develope' 2> ${_TEMP}
+					1 'production'2> ${_TEMP}
 	if [ ${?} -eq 0 ] ; then
 		ENVIRONMENT=`cat ${_TEMP}`
 		rm -f ${_TEMP}
 		case ${ENVIRONMENT} in
 			0) ENVIRONMENT_TYPE='testing';;
 			1) ENVIRONMENT_TYPE='production';;
-			2) ENVIRONMENT_TYPE='develope';;
 
 		esac
 	else
