@@ -202,8 +202,8 @@ gui_choose_environment () {
 					--cancel-label 'Back' \
 					--menu 'Choose the environment:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 3 \
 					0 'testing' \
-					1 'production' 2> ${_TEMP}
-					2 'develope'
+					1 'production'
+					2 'develope' 2> ${_TEMP}
 	if [ ${?} -eq 0 ] ; then
 		ENVIRONMENT=`cat ${_TEMP}`
 		rm -f ${_TEMP}
