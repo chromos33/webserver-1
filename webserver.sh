@@ -171,6 +171,8 @@ gui_choose_domain () {
 	case ${ENVIRONMENT} in
 		0) DOMAIN_ENVIRONMENT_TYPE='test';;
 		1) DOMAIN_ENVIRONMENT_TYPE='live';;
+	        2) DOMAIN_ENVIRONMENT_TYPE='development';;
+
 	esac
 	DOMAIN_PROJECT=`echo ${PROJECT_NAME} | awk -F'_' '{ print $2 }'`
 	DOMAIN=${DOMAIN_PROJECT}'.'${DOMAIN_ENVIRONMENT_TYPE}'.'${DOMAIN_MASTER}
