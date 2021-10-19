@@ -171,7 +171,7 @@ gui_choose_domain () {
 	case ${ENVIRONMENT} in
 		0) DOMAIN_ENVIRONMENT_TYPE='test';;
 		1) DOMAIN_ENVIRONMENT_TYPE='live';;
-
+		2) DOMAIN_ENVIRONMENT_TYPE='development';;
 	esac
 	DOMAIN_PROJECT=`echo ${PROJECT_NAME} | awk -F'_' '{ print $2 }'`
 	DOMAIN=${DOMAIN_PROJECT}'.'${DOMAIN_ENVIRONMENT_TYPE}'.'${DOMAIN_MASTER}
@@ -201,13 +201,15 @@ gui_choose_environment () {
 					--cancel-label 'Back' \
 					--menu 'Choose the environment:' ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 2 \
 					0 'testing' \
-					1 'production' 2> ${_TEMP}
+					1 'production' 2> ${_TEMP} \
+					2 'development' 
 	if [ ${?} -eq 0 ] ; then
 		ENVIRONMENT=`cat ${_TEMP}`
 		rm -f ${_TEMP}
 		case ${ENVIRONMENT} in
 			0) ENVIRONMENT_TYPE='testing';;
 			1) ENVIRONMENT_TYPE='production';;
+			2) ENVIRONMENT_TYPE='development';;
 		esac
 	else
 		gui_choose_main_action
@@ -240,11 +242,12 @@ gui_choose_project_actions () {
 	dialog	--backtitle "${APP_TITLE}" \
 					--title "Project actions / ${ENVIRONMENT_TYPE} / ${PROJECT_NAME}" \
 					--cancel-label 'Back' \
-					--menu 'Choose action:'  ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 4 \
+					--menu 'Choose action:'  ${SCREEN_HEIGHT_LO} ${SCREEN_WIDTH_LO} 5 \
 					0 'Show GIT status' \
 					1 'Show information of project' \
 					2 'Show last 100 error log entries' \
-					3 'Update project' 2> ${_TEMP}
+					3 'Update project' \
+					4 'Composer update' 2> ${_TEMP}
 	if [ ${?} -eq 0 ]; then
 		ACTION=`cat ${_TEMP}`
 		rm -f ${_TEMP}
@@ -253,6 +256,7 @@ gui_choose_project_actions () {
 			1) gui_show_project_info;;
 			2) gui_show_project_error_log;;
 			3) gui_update_project;;
+			4) gui_update_composer;;
 		esac
 	else
 		gui_choose_main_action
@@ -434,6 +438,12 @@ gui_update_project () {
 	gui_choose_project_actions
 }
 
+# --- GUI: Composer update
+gui_update_composer () {
+	php composer phar update #--working-dir=/var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
+	gui_choose_project_actions
+}
+
 # --- HELPER: Checkout a project
 helper_project_checkout () {
 	SVN_REPO=${SVN_REPO_PROTOCOL}'://'${SVN_REPO_URL}':'${SVN_REPO_PORT}${SVN_REPO_PATH}
@@ -472,4 +482,5 @@ main_menu () {
 while true; do
 	main_menu
 done
+
 
