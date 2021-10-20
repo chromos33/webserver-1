@@ -440,7 +440,7 @@ gui_update_project () {
 
 # --- GUI: Composer update
 gui_update_composer () {
-	php composer phar update #--working-dir=/var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
+        composer  update --working-dir=/var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
 	gui_choose_project_actions
 }
 
