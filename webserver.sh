@@ -306,7 +306,7 @@ gui_choose_project_from_filesystem () {
 # --- GUI: Choose project from GIT
 gui_choose_project_from_svn () {
 	SVN_REPO=${SVN_REPO_PROTOCOL}'://'${SVN_REPO_URL}':'${SVN_REPO_PORT}${SVN_REPO_PATH}
-	curl -i -H "Authorization: token ${GIT_TOKEN}" -s https://api.github.com/user/repos |
+	curl -i -H "Authorization: token ${GIT_TOKEN}" -s https://api.github.com/user/repos?per_page=100 |
 	grep -zoP '"git_url":\s*\K[^\s,]*(?=\s*,)' | 
 	tr '\"' '\n' |
 	sed -n -e '/git/{p;n;}' |
@@ -440,7 +440,9 @@ gui_update_project () {
 
 # --- GUI: Composer update
 gui_update_composer () {
-        composer  update --working-dir=/var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
+	 composer update --working-dir=/var/www/${ENVIRONMENT_TYPE}/${PROJECT_NAME}/htdocs
+	 	echo 'composer update done'
+
 	gui_choose_project_actions
 }
 
