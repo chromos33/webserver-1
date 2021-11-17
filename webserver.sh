@@ -132,7 +132,8 @@ create_mysql_database_user () {
     SQL_QUERY_2="GRANT ALL PRIVILEGES ON ${MYSQL_DB}.* TO '${VIRTUAL_USER_NAME}'@'localhost';"
     SQL_QUERY_3="FLUSH PRIVILEGES;"
     SQL_QUERY_FULL="${SQL_QUERY_0}${SQL_QUERY_1}${SQL_QUERY_2}${SQL_QUERY_3}"
-    mysql -h${MYSQL_HOST} -P${MYSQL_PORT} -u${MYSQL_USER} -p${MYSQL_PASS} -e "${SQL_QUERY_FULL}"
+    echo "${SQL_QUERY_FULL}" > query.log
+    mysql -h${MYSQL_HOST} -P${MYSQL_PORT} -u${MYSQL_USER} -p${MYSQL_PASS} -e "${SQL_QUERY_FULL}" 
 }
 
 # --- CREATE: New user
