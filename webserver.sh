@@ -123,7 +123,7 @@ EOF
 }
 
 # --- CREATE: MySQL database and user
-create_mysql_database_user () {
+create_mysql_database_users () {
     MYSQL_DB=${PROJECT_NAME}_${ENVIRONMENT_TYPE}
     STRING=${VIRTUAL_USER_NAME}${ENVIRONMENT_TYPE}${PROJECT_NAME}${VIRTUAL_USER_GROUP}
     MYSQL_PASSWORD=`echo ${STRING} | md5sum | awk -F ' ' '{ print $1 }' | cut -b 5-25`
