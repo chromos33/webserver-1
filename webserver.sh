@@ -18,7 +18,7 @@ APP_TITLE='innomedia AG - Project management tool'
 
 # --- CONFIGURE: MySQL
 MYSQL_HOST='localhost'
-MYSQL_PASS='e784fB5r!97T842$f92'
+MYSQL_PASS='password'
 MYSQL_PORT='3306'
 MYSQL_USER='root'
 
