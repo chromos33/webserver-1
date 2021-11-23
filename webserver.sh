@@ -4,11 +4,10 @@
 
 # App	Project management tool
 # Version: 0.2
-# Date:	2010-06-08
-# File:	webserver-projects.sh
-# Author: Runge, Timo
+# Date:	28.09.2021
+# File:	webserver.sh
 # Copyright: 2010 innomedia AG
-# Optimized: Ornella  / 28.09.2021
+# Author: Ornella 
 
 # --------------------------------------------------------------------------------
 
